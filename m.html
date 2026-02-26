@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>گالری نقاشی‌های من</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', system-ui, sans-serif;
+      color: #2d1e12;
+      min-height: 100vh;
+      padding: 20px 8px;
+      position: relative;
+      overflow-x: hidden;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #a8e063, #ee7752);
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle-layer {
+      position: absolute;
+      inset: 0;
+      animation: float 25s linear infinite;
+    }
+
+    .layer1 {
+      box-shadow: 
+        10vw 15vh 0 1px #fff,
+        20vw 30vh 0 1px #fff,
+        35vw 10vh 0 1px #fff,
+        50vw 40vh 0 1px #fff,
+        65vw 20vh 0 1px #fff,
+        80vw 60vh 0 1px #fff,
+        90vw 25vh 0 1px #fff,
+        5vw 70vh 0 1px #fff,
+        30vw 80vh 0 1px #fff,
+        45vw 5vh 0 1px #fff;
+      animation-duration: 18s;
+      opacity: 0.7;
+    }
+
+    .layer2 {
+      box-shadow: 
+        15vw 25vh 0 2px #fff,
+        40vw 50vh 0 2px #fff,
+        55vw 15vh 0 2px #fff,
+        70vw 45vh 0 2px #fff,
+        85vw 35vh 0 2px #fff,
+        25vw 65vh 0 2px #fff,
+        60vw 75vh 0 2px #fff;
+      animation-duration: 30s;
+      opacity: 0.5;
+    }
+
+    .layer3 {
+      box-shadow: 
+        30vw 10vh 0 3px #fff,
+        75vw 30vh 0 3px #fff,
+        20vw 55vh 0 3px #fff,
+        90vw 80vh 0 3px #fff;
+      animation-duration: 45s;
+      opacity: 0.3;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-150vh) translateX(30vw); }
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(to bottom, rgba(120, 70, 180, 0.07), transparent);
+    }
+
+    h1 {
+      font-size: 3.1rem;
+      color: #4a2c8c;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 10px rgba(74,44,140,0.15);
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      color: #5c4a6e;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .gallery {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+      transition: all 0.28s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 22px 48px rgba(74,44,140,0.18);
+    }
+
+    .card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .info {
+      padding: 22px 24px;
+    }
+
+    .title {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+      color: #2d1e12;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #d32f2f;
+      margin: 12px 0 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #e1306c, #c13584);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #c13584, #a92d6e);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(225,48,108,0.35);
+    }
+
+    .sold::after {
+      content: "فـروشـ رفته";
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: #e53935;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transform: rotate(8deg);
+      box-shadow: 0 4px 12px rgba(229,57,53,0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px 30px;
+      color: #6b5b7e;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.4rem; }
+      .gallery { gap: 24px; }
+      .card img { height: 340px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles">
+    <div class="particle-layer layer1"></div>
+    <div class="particle-layer layer2"></div>
+    <div class="particle-layer layer3"></div>
+  </div>
+
+<header>
+  <h1>نقاشی‌های من</h1>
+  <p class="tagline">هر تابلو یه قصه‌ست… اگه دوست داری یکی‌شون خونه‌ی تو رو قشنگ‌تر کنه، بیا تو دایرکت حرف بزنیم 🌸</p>
+</header>
+
+<section class="gallery">
+
+  <div class="card">
+    <img src=https://s8.uupload.ir/files/-2147483648_-212388_xd7b.jpg alt=هیچ
+
+    >
+    <div class="info">
+      <h3 class="title">نقاشی هیچ</h3>
+      <div class="price">700,000 تومان</div>
+      <a href="https://ig.me/m/نام_کاربری_اینستاگرامت" class="btn" target="_blank">پیام در دایرکت اینستاگرام</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src=https://s8.uupload.ir/files/-2147483648_-212390_y6zq.jpg alt="خاطره‌ی بارون">
+    <div class="info">
+      <h3 class="title"<
+  </h3>
+      
+      <div class="price">1,500,000 تومان</div>
+      <a href="https://ig.me/m/نام_کاربری_اینستاگرامت" class="btn" target="_blank">پیام در دایرکت اینستاگرام</a>
+    </div>
+  </div>
+
+  <div class="card sold">
+    <img src="https://images.unsplash.com/photo-1547891654-e66ed7f6f0f4?w=800" alt="نقاشی">
+    <div class="info">
+      <h3 class="title">طلوع در دشت</h3>
+      <div class="price">فـروش رفته</div>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  ساخته شده با عشق و رنگ • برای سفارش کار جدید، خرید تابلو یا هر سوالی<br>
+  دایرکت اینستاگرام: <a href="https://ig.me/m/نام_کاربری_اینستاگرامت" style="color:#e1306c; text-decoration:underline;">@نام_کاربری_اینستاگرامت</a>
+</footer>
+
+</body>
+</html>
